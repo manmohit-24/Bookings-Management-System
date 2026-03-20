@@ -28,3 +28,19 @@ This doc contains the system design and decisions of Bookings Management System 
 3. An item can have at most one **active reservation or confirmed booking** at a time.
 
 ---
+## State Diagrams :
+
+### Item And Reservation :
+ ![](./diagrams/reservation_state_diagram/reservation_state_diagram.svg)
+
+Item's state are driven by reservation linked to it. Only one reservations per item at a time.
+
+- If a reservation exists in `RESERVED` or `PAYMENT_IN_PROGRESS`:  
+    → item is **RESERVED**
+    
+- If a reservation is `CONFIRMED`:  
+    → item is **BOOKED**
+    
+- If no active reservation exists (or it is `CANCELLED`):  
+    → item is **AVAILABLE**
+
